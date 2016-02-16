@@ -94,6 +94,14 @@ app.get('/contact', function(req, res){
 	res.render('contact.html', parms);
 });
 
+app.get('/project/:path', function(req, res){
+	//app.get('/', routes.index);
+	var parms = {
+		title : "projects"
+	}
+	res.render('project.html', parms);
+});
+
 app.get('/api/featuredwork', function(req, res){
 	json = getConfig('clients-config.js');
 	res.setHeader('Content-Type', 'application/json');

@@ -7,8 +7,8 @@
     }
   </style>
   <template>
-    <iron-ajax handle-as="json" url="/api/featuredwork" last-response="{{data}}"></iron-ajax>
     <article class="pageBound">
+        <iron-ajax handle-as="json" url$="{{buildURL()}}" last-response="{{data}}"></iron-ajax>
         <header class="col--12-12 pad">
           <h2 class="sectionHead">Tees With Tude</h2>
         </header>
@@ -55,7 +55,12 @@
       getClass: function(index) {
         return (index > 0) ? "col--3-12 col--6-12-md pad" : "col--6-12 col--12-12-md pad";
       },
+      buildURL: function(path) {
+        console.log(this);
+        return 'api/project/'+ path;
+      },
       attached: function() {
+          console.log(this.path);
           this.$$('iron-ajax').params = {};
           this.$$('iron-ajax').generateRequest();
       }
