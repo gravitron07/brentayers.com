@@ -1,0 +1,38 @@
+
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<dom-module id="work-spotlight">
+  <style>
+    :host::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  </style>
+  <template>
+    <iron-ajax handle-as="json" url="/api/featuredwork" last-response="{{data}}"></iron-ajax>
+    <article class="pageBound">
+      <header class="col--12-12 pad">
+        <h2 class="sectionHead">Selected Work</h2>
+      </header>
+      <nav class="workNav">
+        <template is="dom-repeat" items="{{data}}">
+          <project-link class$="{{getClass(index)}}" path="{{item.path}}" label="{{item.label}}" image="{{item.image}}"></project-link>
+        </template>
+      </nav>
+    </article>
+  </template>
+</dom-module>
+<script>
+  (function() {
+    Polymer({
+      is: 'work-spotlight',
+      getClass: function(index) {
+        return (index > 0) ? "col--3-12 col--6-12-md pad" : "col--6-12 col--12-12-md pad";
+      },
+      attached: function() {
+          this.$$('iron-ajax').params = {};
+          this.$$('iron-ajax').generateRequest();
+      }
+    });
+  })();
+</script>

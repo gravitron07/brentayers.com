@@ -1,0 +1,64 @@
+<dom-module id="global-logo">
+	<style>
+		:host {
+			display: block;
+		}
+		.logo{
+			text-align: center;
+			width: 100%;
+			line-height: initial;
+		}
+		.logo__anchor{
+			text-decoration: none;
+			margin: 10% auto 0 auto;
+			position: relative;
+			width: 330px;
+			display: block;
+		}
+		.logo__anchor::before{
+			width: 136px;
+			height: 136px;
+			margin: 0 auto;
+			display: block;
+			content: " ";
+			background: url("/images/logo1.png") no-repeat;
+			background-size: contain;
+		}
+		@media only screen and (max-width: 959px) {
+			.logo__anchor{
+			margin: 2% auto 0 auto;
+			}
+		}
+		@media only screen and (max-width: 780px) {
+			.logo__anchor{
+			margin: 7% auto 0 auto;
+			}
+			.logo__span--name{
+			font-size: 2.5rem;
+			}
+			.logo__span--title{
+			font-size: 1.2rem;
+			margin: -6px 0 0 0;
+			}
+			.logo__anchor::before{
+			width: 70px;
+			height: 70px;
+			}
+		}
+		@media only screen and (max-width: 346px) {
+			.logo__anchor{
+			margin: 3% auto 0 auto;
+			}
+		}
+	</style>
+	<template>
+      <p class="logo"><a href="/" class="logo__anchor"></a><content></content></p>
+	</template>
+</dom-module>
+<script>
+  (function() {
+    Polymer({
+      is: 'global-logo'
+    });
+  })();
+</script>

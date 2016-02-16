@@ -1,0 +1,130 @@
+<dom-module id="contact-form">
+	<style>
+		:host {
+			display: block;
+		}
+		.formComponent{
+			background: #272831;
+			border: 0;
+			border-radius: 5px;
+			vertical-align: top;
+			border : 1px solid #2e2f38;
+			padding: 0;
+		}
+		.formComponent *{
+			box-sizing: border-box;
+		}
+		.formComponent__label{
+			display: inline-block;
+			width: 15%;
+			vertical-align: top;
+			padding: 8px;
+			background: #2e2f38;
+		}
+		.formComponent__input{
+			display: inline-block;
+			outline: none;
+			background: none;
+			border: 0;
+			color: #fff;
+			padding: 8px;
+			width: 83%;
+		}
+		.formComponent__input--tall{
+			height: 75px;
+		}
+		.formComponent__button{
+			border: 0;
+			border-radius: 3px;
+			padding: 10px 20px;
+			text-align: center;
+			text-shadow: 1px 1px #498d4f;
+			color: #fff;
+			font-family: Andada-Regular;
+			background: #67bf6f;
+			-webkit-box-shadow: 0px 2px 0px 1px rgba(73,141,79,1);
+			-moz-box-shadow: 0px 2px 0px 1px rgba(73,141,79,1);
+			box-shadow: 0px 2px 0px 1px rgba(73,141,79,1);
+			cursor: pointer;
+		}
+		.formComponent__button:active{
+			outline: none;
+			-webkit-box-shadow: 0px 1px 0px 1px rgba(73,141,79,1);
+			-moz-box-shadow: 0px 1px 0px 1px rgba(73,141,79,1);
+			box-shadow: 0px 1px 0px 1px rgba(73,141,79,1);
+			margin: 1px 0 0 0;
+		}
+
+		@media only screen and (max-width: 450px) {
+			.formComponent__input{
+				width: 100%!important;
+			}
+			.formComponent__label{
+				width: 100%!important;
+			}
+		}
+
+		@media only screen and (max-width: 641px) {
+			.formComponent__input{
+				width: 70%;
+			}
+			.formComponent__label{
+				width: 27%;
+			}
+		}
+		@media only screen and (max-width: 959px) {
+			.formComponent__input{
+				width: 60%;
+			}
+			.formComponent__label{
+				width: 37%;
+			}
+		}
+	</style>
+	<template>
+		  <form id="contactForm" method="get" action="">
+			<div class="col--12-12 pad">
+			  <fieldset class="formComponent">
+				<label class="formComponent__label" for="fullName">Name</label>
+				<input class="formComponent__input" placeholder="ex: Steve Smith" type="text" id="fullName" name="fullName" />
+			  </fieldset>
+			</div>
+			<div class="col--6-12 pad">
+			  <fieldset class="formComponent">
+				<label class="formComponent__label" for="phone">Phone</label>
+				<input class="formComponent__input" placeholder="555-555-5555" type="text" id="phone" name="phone" />
+			  </fieldset>
+			</div>
+			<div class="col--6-12 pad">
+			  <fieldset class="formComponent">
+				<label class="formComponent__label" for="email">Email</label>
+				<input class="formComponent__input" placeholder="your@email.com" type="text" id="email" name="email" />
+			  </fieldset>
+			</div>
+			<div class="col--12-12 pad">
+			  <fieldset class="formComponent">
+				<label class="formComponent__label" for="message">Message</label>
+				<textarea class="formComponent__input formComponent__input--tall" id="message" name="message"></textarea>
+			  </fieldset>
+			</div>
+			<div class="col--12-12 pad">
+			  <input class="formComponent__button" type="submit" id="submitButn" alt="Submit" value="Say Hi" />
+			</div>
+		  </form>
+	</template>
+</dom-module>
+<script>
+	(function() {
+		Polymer({
+			is: 'contact-form',
+
+			properties: {
+				search: {
+					type: String,
+					value: 'hammer',
+					notify: true
+				}
+			}
+		});
+	})();
+</script>

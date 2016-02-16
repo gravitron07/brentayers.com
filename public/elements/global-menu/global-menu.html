@@ -1,0 +1,95 @@
+<dom-module id="global-menu">
+	<style>
+		:host {
+			display: block;
+		}
+		.headerMenu__list{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.headerMenu__item{
+			display: inline-block;
+			padding: 15px 25px;
+		}
+		.headerMenu__item a{
+			font-family: 'Andada-Regular';
+			font-size: 2.5rem;
+			color: #dfdedf;
+			text-decoration: none;
+			text-shadow: 2px 2px #101116;
+		}
+		.menuShow /deep/ .headerMenu__list {
+			top: 0;
+		}
+		@media only screen and (max-width: 959px) {
+			.header--fixed:before {
+			padding-top: 48%;
+			}
+		}
+		@media only screen and (max-width: 780px) {
+			.headerMenu{
+			position: relative;
+			}
+			.headerMenu__list{
+			top: -500px;
+			position: absolute;
+			width: 100%;
+			background: #272831;
+			border-bottom :3px solid #2e2f38;
+			z-index: 24;
+			-webkit-transition: top .3s; /* Safari */
+			transition: top .3s;
+			}
+			.headerMenu__item{
+			display: block;
+			float: none;
+			}
+			.headerMenu__item a{
+			font-size: 1.5rem;
+			}
+		}
+		@media only screen and (max-width: 346px) {
+			.headerMenu__item a{
+			font-size: 1.2rem;
+			}
+		}
+	</style>
+	<template>
+			<nav class="headerMenu" id="globalMenu">
+				<ul class="headerMenu__list">
+					<li class="headerMenu__item"><a data-route="work" href="/work">Work</a></li>
+					<li class="headerMenu__item"><a data-route="about" href="/about">About</a></li>
+					<li class="headerMenu__item"><a data-route="contact" href="/contact">Contact</a></li>
+				</ul>
+				<menu-toggleButn id="menuToggle" status="closed" on-click="handleClick"></menu-toggleButn>
+			</nav>
+	</template>
+</dom-module>
+<script>
+	(function() {
+		Polymer({
+			is: 'global-menu',
+			handleClick: function(e) {
+				e.preventDefault();
+				var menu = this.$.globalMenu,
+					menuToggle = this.$.menuToggle;
+					activeClass = " menuShow";
+				if(menu.className.indexOf(activeClass) > -1){
+					menu.className = menu.className.replace(activeClass, "");
+					menuToggle.status="closed";
+				}else{
+					menuToggle.status="active";
+					menu.className += activeClass;
+				}
+			},
+			properties: {
+				search: {
+					type: String,
+					value: 'hammer',
+					notify: true
+				}
+			}
+		});
+	})();
+</script>

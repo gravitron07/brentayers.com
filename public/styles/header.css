@@ -1,0 +1,54 @@
+.header{
+	background: #202129;
+	padding: 0 0 25px 0;
+	color: #fff;
+}
+.header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.header--fixed{
+	position:relative;
+	color: #fff;
+}
+.header--fixed:before {
+	content: "";
+	padding-top: 48%;
+	display: block;
+ /* background: url("../images/pattern.jpg") fixed;*/
+ background: #202129;
+}
+.header__imageWrap--fixed{
+	position: fixed;
+	min-width: 288px;
+	min-height: 316px;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+body /deep/ .logo__span--name{
+	font-family: 'Andada-Regular';
+	color: #f2f2f2;
+	display: block;
+	text-shadow: 2px 2px #101116;
+	font-size: 4.5rem;
+}
+body /deep/ .logo__span--title{
+	font-family: 'Andada-Regular';
+	color: #f2f2f2;
+	display: block;
+	font-size: 2.5rem;
+	margin: -6px 0 0 0;
+	text-shadow: 2px 2px #101116;
+}
+
+@media only screen and (max-width: 780px) {
+    body /deep/.logo__span--name{
+    font-size: 2.5rem;
+    }
+    body /deep/.logo__span--title{
+    font-size: 1.2rem;
+    margin: -6px 0 0 0;
+    }
+}

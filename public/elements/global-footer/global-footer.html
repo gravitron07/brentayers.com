@@ -1,0 +1,30 @@
+<dom-module id="global-footer">
+	<style>
+		:host {
+			display: block;
+		}
+
+	</style>
+	<template>
+		<section class="pageFooter pageBound">
+			<footer class="pageFooter__footer col-12-12 pad">
+				&copy; 2016 Brent Ayers
+			</footer>
+		</section>
+	</template>
+</dom-module>
+<script>
+  (function() {
+    Polymer({
+      is: 'global-footer',
+
+      properties: {
+        search: {
+          type: String,
+          value: 'hammer',
+          notify: true
+        }
+      }
+    });
+  })();
+</script>

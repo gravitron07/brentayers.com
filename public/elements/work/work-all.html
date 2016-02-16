@@ -1,0 +1,33 @@
+
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<dom-module id="work-all">
+  <style>
+    :host::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  </style>
+  <template>
+    <iron-ajax handle-as="json" url="/api/work" last-response="{{data}}"></iron-ajax>
+        <nav class="workNav">
+        <template is="dom-repeat" items="{{data}}">
+          <project-link class$="{{getClass(index)}}" path="{{item.path}}" label="{{item.label}}" image="{{item.image}}"></project-link>
+        </template>
+        </nav>
+  </template>
+</dom-module>
+<script>
+  (function() {
+    Polymer({
+      is: 'work-all',
+      getClass: function(index) {
+        return ( (index > 0) || (index == 9) ) ? "col--3-12 col--6-12-md pad" : "col--6-12 col--12-12-md pad";
+      },
+      attached: function() {
+          this.$$('iron-ajax').params = {};
+          this.$$('iron-ajax').generateRequest();
+      }
+    });
+  })();
+</script>

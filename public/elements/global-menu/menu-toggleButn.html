@@ -1,0 +1,83 @@
+<dom-module id="menu-toggleButn">
+	<style>
+		:host {
+			background: #ccc;
+			display: block;
+		}
+		.menuButton{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 18px;
+			height: 18px;
+			display: none;
+			z-index: 25;
+		}
+		.menuButton::before{
+			display: block;
+			height: 5px;
+			display: block;
+			content: " ";
+			border-top: 2px solid #fff;
+			border-bottom: 2px solid #fff;
+			-webkit-transition: all .3s; /* Safari */
+			transition: all .3s;
+		}
+		.menuButton::after{
+			height: 4px;
+			display: block;
+			content: " ";
+			border-bottom: 2px solid #fff;
+			-webkit-transition: all .3s; /* Safari */
+			transition: all .3s;
+		}
+		.menuButton__span{
+			text-indent: -5000px;
+			display: block;
+			height: 1px;
+			overflow: hidden;
+		}
+		.menuButton--active::before{
+			border-bottom: 0;
+			-ms-transform: rotate(45deg); /* IE 9 */
+			-ms-transform-origin: 20% 40%; /* IE 9 */
+			-webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+			-webkit-transform-origin: 20% 40%; /* Chrome, Safari, Opera */
+			transform: rotate(45deg);
+			transform-origin: 20% 40%;
+		}
+		.menuButton--active::after{
+			-ms-transform: rotate(-45deg); /* IE 9 */
+			-ms-transform-origin: -3% 40%; /* IE 9 */
+			-webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+			-webkit-transform-origin: -3% 40%; /* Chrome, Safari, Opera */
+			transform: rotate(-45deg);
+			transform-origin: -3% 40%;
+		}
+		@media only screen and (max-width: 780px) {
+			.menuButton{
+			display: block;
+			}
+		}
+	</style>
+	<template>
+		<a href="/menu" class$="{{classColor(status)}}"><span class="menuButton__span">Toggle Menu</span></a>
+	</template>
+</dom-module>
+<script>
+	(function() {
+		Polymer({
+			is: 'menu-toggleButn',
+			classColor: function(status) {
+				return 'menuButton menuButton--'+ status;
+			},
+			properties: {
+				status: {
+					type: String,
+					value: 'hammer',
+					notify: true
+				}
+			}
+		});
+	})();
+</script>

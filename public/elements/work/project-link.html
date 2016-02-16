@@ -1,0 +1,41 @@
+<dom-module id="project-link">
+  <style>
+    :host {
+      display: block;
+    }
+    .workNav__anchor{
+      text-decoration: none;
+      border: 4px solid #ccc;
+      display: block;
+      height: 100%;
+    }
+    .workNav__image{
+      width: 100%;
+      vertical-align: bottom;
+    }
+
+  </style>
+  <template>
+        <a class="workNav__anchor" href$="{{buildURL(path)}}"><img class="workNav__image" src$="{{getImage(image)}}" /></a>
+  </template>
+</dom-module>
+<script>
+  (function() {
+    Polymer({
+      is: 'project-link',
+      buildURL: function(path) {
+        return '/project/'+ path;
+      },
+      getImage: function(image) {
+        return "/images/projects/" + image;
+      },
+      properties: {
+        path: {
+          type: String,
+          value: '',
+          notify: true
+        }
+      }
+    });
+  })();
+</script>
