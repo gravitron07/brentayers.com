@@ -13,16 +13,87 @@
       width: 100%;
       vertical-align: bottom;
     }
+@-webkit-keyframes bounceInDown {
+    0%, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0)
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0)
+    }
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0)
+    }
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0)
+    }
+    to {
+        -webkit-transform: none;
+        transform: none
+    }
+}
+@keyframes bounceInDown {
+    0%, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0)
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0)
+    }
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0)
+    }
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0)
+    }
+    to {
+        -webkit-transform: none;
+        transform: none
+    }
+}
+.bounceInDown {
+    -webkit-animation-name: bounceInDown;
+    animation-name: bounceInDown
+}
 
   </style>
   <template>
-        <a class="workNav__anchor" href$="{{buildURL(path)}}"><img class="workNav__image" src$="{{getImage(image)}}" /></a>
+        <template is="dom-if" if="{{isLink(path)}}">
+          <a class="workNav__anchor bounceInDown animated" href$="{{buildURL(path)}}"><img class="workNav__image" src$="{{getImage(image)}}" /></a>
+        </template>
+        <template is="dom-if" if="{{isImage(path)}}">
+          <span class="workNav__anchor bounceInDown animated" href$="{{buildURL(path)}}"><img class="workNav__image" src$="{{getImage(image)}}" /></span>
+        </template>
   </template>
 </dom-module>
 <script>
   (function() {
     Polymer({
       is: 'project-link',
+      isLink: function(path) {
+        return (path !== "#");
+      },
+      isImage: function(path){
+        return (path === "#");
+      },
       buildURL: function(path) {
         return '/project/'+ path;
       },

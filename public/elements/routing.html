@@ -20,22 +20,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'home';
     });
 
-    page('/work', function () {
-      app.route = 'work';
-    });
-
-    page('/contact', function () {
-      app.route = 'contact';
-    });
-
-    page('/about', function () {
-      app.route = 'about';
-    });
-
     page('/project/:path', function (data) {
-      var projectDetail=document.querySelector('project-detail');
-      console.log(projectDetail);
-      projectDetail.path=data.params.path;
+      var detail = document.createElement('project-detail'),
+          workWrapper = document.getElementById('workWrapper');
+      
+      detail.path=data.params.path;
+      workWrapper.appendChild(detail);
+      
       app.route = 'project';
       app.params = data.params;
     });

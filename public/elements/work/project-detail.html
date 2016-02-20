@@ -5,46 +5,69 @@
     :host {
       display: block;
     }
+@-webkit-keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+.fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft
+}
   </style>
   <template>
     <article class="pageBound">
-        <iron-ajax handle-as="json" url$="{{buildURL()}}" last-response="{{data}}"></iron-ajax>
+        <iron-ajax handle-as="json" url$="{{buildURL(path)}}" last-response="{{data}}"></iron-ajax>
         <header class="col--12-12 pad">
-          <h2 class="sectionHead">Tees With Tude</h2>
+          <h2 class="sectionHead fadeInDown animated">{{data.label}}</h2>
         </header>
-        <div class="workItemContent col--12-12-xs col--6-12">
+        <div class="workItemContent col--12-12-xs col--6-12 fadeInLeft animated">
           <div class="contentItem col--12-12 pad">
             <h3 class="contentItem__head">Project:</h3>
-            <p class="contentItem__p">Re/Max wanted to create a site to help educate first time home buyers on the $8000 tax credit that would also work with their previously launched print campaign.</p>
+            <p class="contentItem__p">{{data.project}}</p>
           </div>
           <div class="contentItem col--12-12-sm col--6-12 pad">
             <h3 class="contentItem__head">Deliverables:</h3>
             <ul class="contentItem__list">
-              <li class="contentItem__item">2 Microsites</li>
+              <template is="dom-repeat" items="{{data.deliverables}}">
+                <li class="contentItem__item">{{item}}</li>
+              </template>
             </ul>
           </div>
           <div class="contentItem col--12-12-sm col--6-12 pad">
             <h3 class="contentItem__head">Technologies Used:</h3>
             <ul class="contentItem__list">
-              <li class="contentItem__item">jquery</li>
-              <li class="contentItem__item">flash</li>
-              <li class="contentItem__item">css</li>
-              <li class="contentItem__item">html</li>
+              <template is="dom-repeat" items="{{data.technologies}}">
+              <li class="contentItem__item">{{item}}</li>
+              </template>
             </ul>
           </div>
         </div>
         <div class="workItemImages col--12-12-xs col--6-12 pad">
-          <div class="col--12-12 pad"><a class="workNav__anchor" href="/work/work1"><img class="workNav__image" src="images/projects/test-image.jpg"/></a></div>
-          <div class="col--12-12-sm col--6-12 pad"><a class="workNav__anchor" href="/work/work1"><img class="workNav__image" src="images/projects/test-image.jpg"/></a></div>
-          <div class="col--12-12-sm col--6-12 pad"><a class="workNav__anchor" href="/work/work1"><img class="workNav__image" src="images/projects/test-image.jpg"/></a></div>
+        <template is="dom-repeat" items="{{data.images}}">
+          <project-link class$="{{getClass(index)}}" path="#" label="data.label" image="{{item}}"></project-link>
+        </template>
         </div>
 
-
-      <nav class="workNav">
-        <template is="dom-repeat" items="{{data}}">
-          <project-link class$="{{getClass(index)}}" path="{{item.path}}" label="{{item.label}}" image="{{item.image}}"></project-link>
-        </template>
-      </nav>
     </article>
   </template>
 </dom-module>
@@ -53,14 +76,12 @@
     Polymer({
       is: 'project-detail',
       getClass: function(index) {
-        return (index > 0) ? "col--3-12 col--6-12-md pad" : "col--6-12 col--12-12-md pad";
+        return (index > 0) ? "col--12-12-sm col--6-12 pad" : "col--12-12 pad";
       },
       buildURL: function(path) {
-        console.log(this);
-        return 'api/project/'+ path;
+        return '/api/project/'+ path;
       },
       attached: function() {
-          console.log(this.path);
           this.$$('iron-ajax').params = {};
           this.$$('iron-ajax').generateRequest();
       }

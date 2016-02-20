@@ -16,8 +16,9 @@
 	content: "";
 	padding-top: 48%;
 	display: block;
- /* background: url("../images/pattern.jpg") fixed;*/
- background: #202129;
+	/*background: url("../images/bulb.jpg") fixed;
+	background-size: 100%;*/
+	background: #202129;
 }
 .header__imageWrap--fixed{
 	position: fixed;

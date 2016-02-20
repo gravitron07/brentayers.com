@@ -33,6 +33,9 @@
 		.formComponent__input--tall{
 			height: 75px;
 		}
+		.formComponent__input--error{
+			border-left: 1px solid #ff3333;
+		}
 		.formComponent__button{
 			border: 0;
 			border-radius: 3px;
@@ -80,6 +83,53 @@
 				width: 37%;
 			}
 		}
+
+		@-webkit-keyframes shake {
+		    0%, to {
+		        -webkit-transform: translateZ(0);
+		        transform: translateZ(0)
+		    }
+		    10%,
+		    30%,
+		    50%,
+		    70%,
+		    90% {
+		        -webkit-transform: translate3d(-10px, 0, 0);
+		        transform: translate3d(-10px, 0, 0)
+		    }
+		    20%,
+		    40%,
+		    60%,
+		    80% {
+		        -webkit-transform: translate3d(10px, 0, 0);
+		        transform: translate3d(10px, 0, 0)
+		    }
+		}
+		@keyframes shake {
+		    0%, to {
+		        -webkit-transform: translateZ(0);
+		        transform: translateZ(0)
+		    }
+		    10%,
+		    30%,
+		    50%,
+		    70%,
+		    90% {
+		        -webkit-transform: translate3d(-10px, 0, 0);
+		        transform: translate3d(-10px, 0, 0)
+		    }
+		    20%,
+		    40%,
+		    60%,
+		    80% {
+		        -webkit-transform: translate3d(10px, 0, 0);
+		        transform: translate3d(10px, 0, 0)
+		    }
+		}
+		.shake {
+		    -webkit-animation-name: shake;
+		    animation-name: shake
+		}
 	</style>
 	<template>
 		  <form id="contactForm" method="get" action="">
@@ -113,17 +163,57 @@
 		  </form>
 	</template>
 </dom-module>
+
 <script>
 	(function() {
 		Polymer({
 			is: 'contact-form',
+			ready: function() {
+				this.listen(this.$.submitButn, 'click', 'submitForm');
+			},
+			submitForm: function(e){
+				e.preventDefault();
+				this.validateForm();
+			},
+			validateForm: function(){
+				$items = this.shadowRoot.querySelectorAll('*'),
+				errorCount = 0,
+				data = [],
+				dataAttr = "",
+				dataVal = "";
 
-			properties: {
-				search: {
-					type: String,
-					value: 'hammer',
-					notify: true
+				for (var i = 0; i < $items.length; ++i) {
+					if($items[i].className.indexOf("formComponent__input") > -1){
+						dataAttr = $items[i].name;
+						dataVal = $items[i].value;
+						data[data.length] = {dataAttr,dataVal};
+						$items[i].className = $items[i].className.replace(" formComponent__input--error","");
+						if($items[i].value === ""){
+							$items[i].className += " formComponent__input--error";
+							errorCount ++;
+						}
+
+					}
+		        }
+				if(errorCount > 0){
+					this.$.submitButn.className += " shake animated";
+				}else{
+					this.sendData(data);
 				}
+			},
+			sendData: function(data){
+				console.log(data);
+				$.ajax({
+					url: "/sendmail",
+					type : "POST",
+					data : data,
+					error: function(){
+	
+					},
+					success: function(data){
+				 		console.log(data);
+					}
+				});
 			}
 		});
 	})();

@@ -60,6 +60,15 @@ function getClients(data,randomizeList,maxLength){
 	}
 }
 
+function getProject(data,path){
+	var tempData = data.slice();
+	for(var i=0, len=tempData.length; i < len; i++){
+		if(tempData[i].path === path){
+			return tempData[i];
+		}
+	}
+}
+
 //routes
 
 app.get('/', function(req, res){
@@ -102,6 +111,13 @@ app.get('/project/:path', function(req, res){
 	res.render('project.html', parms);
 });
 
+app.get('/api/project/:path', function(req, res){
+	var path = req.params.path;
+	json = getConfig('clients-config.js');
+	res.setHeader('Content-Type', 'application/json');
+	res.send(JSON.stringify(getProject(json,path)));
+});
+
 app.get('/api/featuredwork', function(req, res){
 	json = getConfig('clients-config.js');
 	res.setHeader('Content-Type', 'application/json');
@@ -112,6 +128,16 @@ app.get('/api/work', function(req, res){
 	json = getConfig('clients-config.js');
 	res.setHeader('Content-Type', 'application/json');
 	res.send(JSON.stringify(getClients(json,true)));
+});
+
+app.post('/sendmail', function(req, res){
+	var fullName = req.body.fullName,
+        phone = req.body.phone,
+        email = req.body.email,
+        message = req.body.message;
+
+	res.setHeader('Content-Type', 'application/json');
+	res.send(JSON.stringify({"message" : message}));
 });
 
 var server = app.listen(80);
