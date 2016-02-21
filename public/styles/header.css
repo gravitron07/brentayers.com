@@ -28,28 +28,3 @@
 	top: 0;
 	left: 0;
 }
-body /deep/ .logo__span--name{
-	font-family: 'Andada-Regular';
-	color: #f2f2f2;
-	display: block;
-	text-shadow: 2px 2px #101116;
-	font-size: 4.5rem;
-}
-body /deep/ .logo__span--title{
-	font-family: 'Andada-Regular';
-	color: #f2f2f2;
-	display: block;
-	font-size: 2.5rem;
-	margin: -6px 0 0 0;
-	text-shadow: 2px 2px #101116;
-}
-
-@media only screen and (max-width: 780px) {
-    body /deep/.logo__span--name{
-    font-size: 2.5rem;
-    }
-    body /deep/.logo__span--title{
-    font-size: 1.2rem;
-    margin: -6px 0 0 0;
-    }
-}

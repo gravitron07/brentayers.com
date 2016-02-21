@@ -3,78 +3,79 @@
 		:host {
 			display: block;
 		}
-@-webkit-keyframes bounceInDown {
-  from, 60%, 75%, 90%, to {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
 
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -3000px, 0);
-    transform: translate3d(0, -3000px, 0);
-  }
+    @-webkit-keyframes bounceInDown {
+      from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      }
 
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 25px, 0);
-    transform: translate3d(0, 25px, 0);
-  }
+      0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0);
+      }
 
-  75% {
-    -webkit-transform: translate3d(0, -10px, 0);
-    transform: translate3d(0, -10px, 0);
-  }
+      60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+      }
 
-  90% {
-    -webkit-transform: translate3d(0, 5px, 0);
-    transform: translate3d(0, 5px, 0);
-  }
+      75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+      }
 
-  to {
-    -webkit-transform: none;
-    transform: none;
-  }
-}
+      90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+      }
 
-@keyframes bounceInDown {
-  from, 60%, 75%, 90%, to {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
+      to {
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
 
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -3000px, 0);
-    transform: translate3d(0, -3000px, 0);
-  }
+    @keyframes bounceInDown {
+      from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      }
 
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 25px, 0);
-    transform: translate3d(0, 25px, 0);
-  }
+      0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0);
+      }
 
-  75% {
-    -webkit-transform: translate3d(0, -10px, 0);
-    transform: translate3d(0, -10px, 0);
-  }
+      60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+      }
 
-  90% {
-    -webkit-transform: translate3d(0, 5px, 0);
-    transform: translate3d(0, 5px, 0);
-  }
+      75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+      }
 
-  to {
-    -webkit-transform: none;
-    transform: none;
-  }
-}
+      90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+      }
 
-.bounceInDown {
-  -webkit-animation-name: bounceInDown;
-  animation-name: bounceInDown;
-}
+      to {
+        -webkit-transform: none;
+        transform: none;
+      }
+    }
+
+    .bounceInDown {
+      -webkit-animation-name: bounceInDown;
+      animation-name: bounceInDown;
+    }
 		.logo{
 			text-align: center;
 			width: 100%;
@@ -97,6 +98,22 @@
 			background: url("/images/logo1.png") no-repeat;
 			background-size: contain;
 		}
+    .logo__span--name{
+      font-family: 'Andada-Regular';
+      color: #f2f2f2;
+      display: block;
+      text-shadow: 2px 2px #101116;
+      font-size: 4.5rem;
+    }
+    .logo__span--title{
+      font-family: 'Andada-Regular';
+      color: #f2f2f2;
+      display: block;
+      font-size: 2.5rem;
+      margin: -6px 0 0 0;
+      text-shadow: 2px 2px #101116;
+    }
+
 		@media only screen and (max-width: 959px) {
 			.logo__anchor{
 			margin: 2% auto 0 auto;
@@ -117,6 +134,12 @@
 			width: 70px;
 			height: 70px;
 			}
+      .logo__span--name{
+        font-size: 2.5rem;
+      }
+      .logo__span--title{
+        font-size: 1.2rem;
+      }
 		}
 		@media only screen and (max-width: 346px) {
 			.logo__anchor{
@@ -125,7 +148,7 @@
 		}
 	</style>
 	<template>
-      <p class="logo"><a href="/" class="logo__anchor bounceInDown animated"></a><content></content></p>
+      <p class="logo" ><a href="/" class="logo__anchor bounceInDown animated"></a><span class="logo__span--name">Brent Ayers</span><span class="logo__span--title">Web Developer</span></p>
 	</template>
 </dom-module>
 <script>

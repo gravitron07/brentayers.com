@@ -7,7 +7,7 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<!--
+
 <style is="custom-style">
 
   /*
@@ -54,156 +54,288 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     height: 64px;
   }
 
-  paper-material {
-    border-radius: 2px;
-    height: 100%;
-    padding: 16px 0 16px 0;
-    width: calc(98.66% - 16px);
-    margin: 16px auto;
-    background: white;
+  :root {
+      --column: {
+        position: relative;
+        float: left;
+        box-sizing: border-box!important;
+      };
+
+      --pad: {
+          padding: 8px;
+      };
+
+      --col-1-12: {
+          width: 8.33333%;
+      };
+      --col-2-12: {
+          width: 16.66667%;
+      };
+      --col-3-12: {
+          width: 25%;
+      };
+      --col-4-12: {
+          width: 33.33333%;
+      }
+      --col-5-12: {
+          width: 41.66667%;
+      };
+      --col-6-12: {
+          width: 50%;
+      };
+      --col-7-12: {
+          width: 58.33333%;
+      };
+      --col-8-12: {
+          width: 66.66667%;
+      };
+      --col-9-12: {
+          width: 75%;
+      };
+      --col-10-12: {
+          width: 83.33333%;
+      };
+      --col-11-12: {
+          width: 91.66667%;
+      };
+      --col-12-12: {
+          width: 100%;
+      };
   }
 
-  paper-menu iron-icon {
-    margin-right: 33px;
-    opacity: 0.54;
-  }
 
-  .paper-menu > .iron-selected {
-    color: var(--default-primary-color);
-  }
 
-  paper-menu a {
-    text-decoration: none;
-    color: var(--menu-link-color);
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-direction: row;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    font-family: 'Roboto', 'Noto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-    min-height: 48px;
-    padding: 0 16px;
-  }
-
-  #mainToolbar .middle {
-    margin-left: 48px;
-  }
-
-  #mainToolbar.has-shadow .middle {
-    font-size: 20px;
-    padding-bottom: 0;
-    margin-left: 48px;
-  }
-
-  /* Height of the scroll area */
-  .content {
-    height: 900px;
-  }
-
-  /* Breakpoints */
-
-  /* Small */
-  @media (max-width: 600px) {
-
-    paper-material {
-      --menu-container-display: none;
-      width: calc(97.33% - 32px);
-       padding-left: 16px;
-      padding-right: 16px;
+    [class*=col--] {
+        position: relative;
+        float: left;
+        box-sizing: border-box!important
+    }
+    .col--1-12 {
+        width: 8.33333%
+    }
+    .col--2-12 {
+        width: 16.66667%
+    }
+    .col--3-12 {
+        width: 25%
+    }
+    .col--4-12 {
+        width: 33.33333%
+    }
+    .col--5-12 {
+        width: 41.66667%
+    }
+    .col--6-12 {
+        width: 50%
+    }
+    .col--7-12 {
+        width: 58.33333%
+    }
+    .col--8-12 {
+        width: 66.66667%
+    }
+    .col--9-12 {
+        width: 75%
+    }
+    .col--10-12 {
+        width: 83.33333%
+    }
+    .col--11-12 {
+        width: 91.66667%
+    }
+    .col--12-12 {
+        width: 100%
+    }
+    @media only screen and (max-width: 380px) {
+        .col--1-12-xs {
+            width: 8.33333%!important;
+        }
+        .col--2-12-xs {
+            width: 16.66667%!important;
+        }
+        .col--3-12-xs {
+            width: 25%!important;
+        }
+        .col--4-12-xs {
+            width: 33.33333%!important;
+        }
+        .col--5-12-xs {
+            width: 41.66667%!important;
+        }
+        .col--6-12-xs {
+            width: 50%!important;
+        }
+        .col--7-12-xs {
+            width: 58.33333%!important;
+        }
+        .col--8-12-xs {
+            width: 66.66667%!important;
+        }
+        .col--9-12-xs {
+            width: 75%!important;
+        }
+        .col--10-12-xs {
+            width: 83.33333%!important;
+        }
+        .col--11-12-xs {
+            width: 91.66667%!important;
+        }
+        .col--12-12-xs {
+            width: 100%!important;
+        }
+    }
+    @media only screen and (max-width: 641px) {
+        .col--1-12-sm {
+            width: 8.33333%
+        }
+        .col--2-12-sm {
+            width: 16.66667%
+        }
+        .col--3-12-sm {
+            width: 25%
+        }
+        .col--4-12-sm {
+            width: 33.33333%
+        }
+        .col--5-12-sm {
+            width: 41.66667%
+        }
+        .col--6-12-sm {
+            width: 50%
+        }
+        .col--7-12-sm {
+            width: 58.33333%
+        }
+        .col--8-12-sm {
+            width: 66.66667%
+        }
+        .col--9-12-sm {
+            width: 75%
+        }
+        .col--10-12-sm {
+            width: 83.33333%
+        }
+        .col--11-12-sm {
+            width: 91.66667%
+        }
+        .col--12-12-sm {
+            width: 100%
+        }
+    }
+    @media only screen and (max-width: 959px) {
+        .col--1-12-md {
+            width: 8.33333%
+        }
+        .col--2-12-md {
+            width: 16.66667%
+        }
+        .col--3-12-md {
+            width: 25%
+        }
+        .col--4-12-md {
+            width: 33.33333%
+        }
+        .col--5-12-md {
+            width: 41.66667%
+        }
+        .col--6-12-md {
+            width: 50%
+        }
+        .col--7-12-md {
+            width: 58.33333%
+        }
+        .col--8-12-md {
+            width: 66.66667%
+        }
+        .col--9-12-md {
+            width: 75%
+        }
+        .col--10-12-md {
+            width: 83.33333%
+        }
+        .col--11-12-md {
+            width: 91.66667%
+        }
+        .col--12-12-md {
+            width: 100%
+        }
+    }
+    @media only screen and (max-width: 960px) {
+        .col--1-12-lg {
+            width: 8.33333%
+        }
+        .col--2-12-lg {
+            width: 16.66667%
+        }
+        .col--3-12-lg {
+            width: 25%
+        }
+        .col--4-12-lg {
+            width: 33.33333%
+        }
+        .col--5-12-lg {
+            width: 41.66667%
+        }
+        .col--6-12-lg {
+            width: 50%
+        }
+        .col--7-12-lg {
+            width: 58.33333%
+        }
+        .col--8-12-lg {
+            width: 66.66667%
+        }
+        .col--9-12-lg {
+            width: 75%
+        }
+        .col--10-12-lg {
+            width: 83.33333%
+        }
+        .col--11-12-lg {
+            width: 91.66667%
+        }
+        .col--12-12-lg {
+            width: 100%
+        }
+    }
+    @media only screen and (min-width: 1280px) {
+        .col--1-12-xl {
+            width: 8.33333%
+        }
+        .col--2-12-xl {
+            width: 16.66667%
+        }
+        .col--3-12-xl {
+            width: 25%
+        }
+        .col--4-12-xl {
+            width: 33.33333%
+        }
+        .col--5-12-xl {
+            width: 41.66667%
+        }
+        .col--6-12-xl {
+            width: 50%
+        }
+        .col--7-12-xl {
+            width: 58.33333%
+        }
+        .col--8-12-xl {
+            width: 66.66667%
+        }
+        .col--9-12-xl {
+            width: 75%
+        }
+        .col--10-12-xl {
+            width: 83.33333%
+        }
+        .col--11-12-xl {
+            width: 91.66667%
+        }
+        .col--12-12-xl {
+            width: 100%
+        }
     }
 
-    .paper-font-display1 {
-      font-size: 12px;
-    }
-
-    .app-name {
-      font-size: 26px;
-    }
-
-    #drawer .paper-toolbar {
-      margin-left: 16px;
-    }
-
-    #overlay {
-      min-width: 360px;
-    }
-
-    .bg {
-      background: white;
-    }
-
-  }
-
-  /* Tablet+ */
-  @media (min-width: 601px) {
-
-    paper-material {
-      width: calc(98% - 46px);
-      max-width: 1260px;
-      margin-bottom: 32px;
-      padding-left: 30px;
-      padding-right: 30px;
-    }
-
-    #drawer.paper-drawer-panel > [drawer] {
-      border-right: 1px solid rgba(0, 0, 0, 0.14);
-    }
-
-    iron-pages {
-      padding: 48px 62px;
-    }
-
-  }
-
-  /* Material Design Adaptive Breakpoints */
-  /*
-    Below you'll find CSS media queries based on the breakpoint guidance
-    published by the Material Design team. You can choose to use, customise
-    or remove these breakpoints based on your needs.
-
-    http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
-   */
-
-  /* mobile-small */
-  @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { }
-  /* mobile-large */
-  @media all and (min-width: 361px) and (orientation: portrait) { }
-  /* mobile-small-landscape */
-  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
-  /* mobile-large-landscape */
-  @media all and (min-width: 481px) and (orientation: landscape) { }
-  /* tablet-small-landscape */
-  @media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) { }
-  /* tablet-large-landscape */
-  @media all and (min-width: 961px) and (orientation: landscape) { }
-  /* tablet-small */
-  @media all and (min-width: 600px) and (orientation: portrait) { }
-  /* tablet-large */
-  @media all and (min-width: 601px) and (max-width: 840px) and (orientation : portrait) { }
-  /* desktop-x-small-landscape */
-  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
-  /* desktop-x-small */
-  @media all and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) { }
-  /* desktop-small-landscape */
-  @media all and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) { }
-  /* desktop-small */
-  @media all and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) { }
-  /* desktop-medium-landscape */
-  @media all and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) { }
-  /* desktop-medium */
-  @media all and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) { }
-  /* desktop-large */
-  @media all and (min-width: 1281px) and (max-width: 1600px) { }
-  /* desktop-xlarge */
-  @media all and (min-width: 1601px) and (max-width: 1920px) { }
+}
 </style>
--->

@@ -3,11 +3,24 @@
 		:host {
 			display: block;
 		}
-
+		.pageBound{
+			max-width:1290px;
+			margin: 0 auto;
+			text-align: left;
+		}
+		.pageFooter__footer{
+			clear: both;
+			border-top: 1px solid #ccc;
+			padding: 25px 0;
+			margin: 10px 0 0 0;
+			@apply(--column);
+			@apply(--pad);
+			@apply(--col-12-12);
+		}
 	</style>
 	<template>
 		<section class="pageFooter pageBound">
-			<footer class="pageFooter__footer col-12-12 pad">
+			<footer class="pageFooter__footer ">
 				&copy; 2016 Brent Ayers
 			</footer>
 		</section>

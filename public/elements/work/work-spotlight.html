@@ -7,12 +7,48 @@
       display: table;
       clear: both;
     }
+    .pageBound{
+      max-width:1290px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .sectionHead{
+      @apply(--column);
+      @apply(--pad);
+      @apply(--col-12-12);
+    }
+    .sectionHead--h2{
+      margin: 10px 0;
+      padding: 0;
+      font-weight: normal;
+      font-family: 'Andada-Regular';
+      font-size: 2rem;
+      color: #67bf6f;
+    }
+    .smallLink{
+      @apply(--column);
+      @apply(--pad);
+      @apply(--col-3-12);
+    }
+    .bigLink{
+      @apply(--column);
+      @apply(--pad);
+      @apply(--col-6-12);
+    }
+    @media only screen and (max-width: 959px) {
+      .smallLink{
+        @apply(--col-6-12);
+      }
+      .bigLink{
+        @apply(--col-12-12);
+      }
+    }
   </style>
   <template>
     <iron-ajax handle-as="json" url="/api/featuredwork" last-response="{{data}}"></iron-ajax>
     <article class="pageBound">
-      <header class="col--12-12 pad">
-        <h2 class="sectionHead">Selected Work</h2>
+      <header class="sectionHead">
+        <h2 class="sectionHead--h2">Selected Work</h2>
       </header>
       <nav class="workNav">
         <template is="dom-repeat" items="{{data}}">
@@ -27,7 +63,7 @@
     Polymer({
       is: 'work-spotlight',
       getClass: function(index) {
-        return (index > 0) ? "col--3-12 col--6-12-md pad" : "col--6-12 col--12-12-md pad";
+        return (index > 0) ? "smallLink" : "bigLink";
       },
       attached: function() {
           this.$$('iron-ajax').params = {};
