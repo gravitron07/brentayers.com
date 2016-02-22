@@ -35,77 +35,39 @@ p{
   font-weight: normal;
   font-style: normal;
 }
-.sectionHead{
-	margin: 10px 0;
-	padding: 0;
-	font-weight: normal;
-	font-family: 'Andada-Regular';
-	font-size: 2rem;
-	color: #67bf6f;
-}
 
 
-.contentItem__list{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-.contentItem__item{
-    position: relative;
-    padding: 0 0 0 26px;
-    line-height: 30px;
-}
-.contentItem__item::after{
-    background: #67bf6f;
-    width: 15px;
-    height: 15px;
-    content: " ";
-    display: block;
-    border-radius: 3px;
-    left: 0;
-    top: 8px;
-    position: absolute;
-    z-index: 1;
-}
-.contentItem__item::before{
-    border-left: 3px solid #fff;
-    border-bottom: 3px solid #fff;
-    width: 12px;
-    height: 4px;
-    -ms-transform: rotate(-45deg); /* IE 9 */
-    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
-    transform: rotate(-45deg);
-    content: " ";
-    display: block;
-    left: 2px;
-    top: 8px;
-    position: absolute;
-    z-index: 2;
-    box-shadow: 2px 2px #202129;
-}
-.contentItem__head{
-    margin: 10px 0;
-    padding: 0;
-    font-weight: normal;
-    font-family: 'Andada-Regular';
-    font-size: 1.5rem;
-    color: #fff;
-}
-.contentItem__head--large{
-    font-size: 3rem;
-}
-.contentItem--highlighted{
-    background: #272831;
-    border-radius: 5px;
-}
-@media only screen and (max-width: 641px) {
-    .contentItem__head{
-        font-size: 1.25rem;
+    .header{
+        background: #202129;
+        padding: 0 0 25px 0;
+        color: #fff;
     }
-    .contentItem__head--large{
-        font-size: 1.75rem;
+    .header:after {
+        content: "";
+        display: table;
+        clear: both;
     }
-}
+    .header--fixed{
+        position:relative;
+        color: #fff;
+    }
+    .header--fixed:before {
+        content: "";
+        padding-top: 48%;
+        display: block;
+        /*background: url("../images/bulb.jpg") fixed;
+        background-size: 100%;*/
+        background: #202129;
+    }
+    .header__imageWrap--fixed{
+        position: fixed;
+        min-width: 288px;
+        min-height: 316px;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
 body /deep/ .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;

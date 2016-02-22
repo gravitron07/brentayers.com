@@ -23,7 +23,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     page('/project/:path', function (data) {
       var detail = document.createElement('project-detail'),
           workWrapper = document.getElementById('workWrapper');
-      
       detail.path=data.params.path;
       workWrapper.appendChild(detail);
       

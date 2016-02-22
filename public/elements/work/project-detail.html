@@ -5,47 +5,116 @@
     :host {
       display: block;
     }
-@-webkit-keyframes fadeInLeft {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0)
+
+    .sectionHead{
+        @apply(--section-header);
     }
-    to {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none
+
+    @-webkit-keyframes fadeInLeft {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0)
+        }
+        to {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none
+        }
     }
-}
-@keyframes fadeInLeft {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0)
+    @keyframes fadeInLeft {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0)
+        }
+        to {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none
+        }
     }
-    to {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none
+
+    .fadeInLeft {
+        -webkit-animation-name: fadeInLeft;
+        animation-name: fadeInLeft
     }
-}
-.fadeInLeft {
-    -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft
-}
+    .header, .contentItem{
+        @apply(--column);
+        @apply(--pad);
+        @apply(--col-12-12);
+    }
+    .workItemContent, .workItemImages, .technologies, .deliverables{
+      @apply(--column);
+      @apply(--pad);
+      @apply(--col-6-12);
+    }
+    .smallLink{
+      @apply(--column);
+      @apply(--pad);
+      @apply(--col-6-12);
+    }
+    .bigLink{
+      @apply(--column);
+      @apply(--pad);
+      @apply(--col-12-12);
+    }
+
+    .contentItem__head{
+        @apply(--contentItem__head);
+    }
+    .contentItem__head--large{
+        @apply(--contentItem__head--large);
+    }
+    .contentItem__list{
+       @apply(--contentItem__list);
+    }
+    .contentItem__item{
+        @apply(--contentItem__item);
+    }
+
+    .contentItem__item::after{
+        @apply(--checkboxSquare);
+    }
+    .contentItem__item::before{
+        @apply(--checkMark);
+    }
+
+    @media only screen and (max-width: 380px) {
+
+    }
+    @media only screen and (max-width: 641px) {
+        .workItemContent{
+            @apply(--col-6-12-imp);
+        }
+        .workItemImages{
+          @apply(--col-12-12-imp);
+        }
+        .deliverables, .technologies{
+            @apply(--col-12-12-imp);
+        }
+    }
+    @media only screen and (max-width: 959px) {
+      .smallLink{
+        @apply(--col-6-12-imp);
+      }
+      .bigLink{
+        @apply(--col-12-12-imp);
+      }
+    }
   </style>
   <template>
     <article class="pageBound">
         <iron-ajax handle-as="json" url$="{{buildURL(path)}}" last-response="{{data}}"></iron-ajax>
-        <header class="col--12-12 pad">
+        <header class="header">
           <h2 class="sectionHead fadeInDown animated">{{data.label}}</h2>
         </header>
-        <div class="workItemContent col--12-12-xs col--6-12 fadeInLeft animated">
-          <div class="contentItem col--12-12 pad">
+        <div class="workItemContent fadeInLeft animated">
+          <div class="contentItem">
             <h3 class="contentItem__head">Project:</h3>
             <p class="contentItem__p">{{data.project}}</p>
           </div>
-          <div class="contentItem col--12-12-sm col--6-12 pad">
+          <div class="deliverables">
             <h3 class="contentItem__head">Deliverables:</h3>
             <ul class="contentItem__list">
               <template is="dom-repeat" items="{{data.deliverables}}">
@@ -53,7 +122,7 @@
               </template>
             </ul>
           </div>
-          <div class="contentItem col--12-12-sm col--6-12 pad">
+          <div class="technologies">
             <h3 class="contentItem__head">Technologies Used:</h3>
             <ul class="contentItem__list">
               <template is="dom-repeat" items="{{data.technologies}}">
@@ -62,7 +131,7 @@
             </ul>
           </div>
         </div>
-        <div class="workItemImages col--12-12-xs col--6-12 pad">
+        <div class="workItemImages">
         <template is="dom-repeat" items="{{data.images}}">
           <project-link class$="{{getClass(index)}}" path="#" label="data.label" image="{{item}}"></project-link>
         </template>
@@ -76,7 +145,7 @@
     Polymer({
       is: 'project-detail',
       getClass: function(index) {
-        return (index > 0) ? "col--12-12-sm col--6-12 pad" : "col--12-12 pad";
+        return (index > 0) ? "smallLink" : "bigLink";
       },
       buildURL: function(path) {
         return '/api/project/'+ path;

@@ -7,6 +7,24 @@
       display: table;
       clear: both;
     }
+    .smallLink{
+      @apply(--column);
+      @apply(--pad);
+      @apply(--col-3-12);
+    }
+    .bigLink{
+      @apply(--column);
+      @apply(--pad);
+      @apply(--col-6-12);
+    }
+    @media only screen and (max-width: 959px) {
+      .smallLink{
+        @apply(--col-6-12);
+      }
+      .bigLink{
+        @apply(--col-12-12);
+      }
+    }
   </style>
   <template>
     <iron-ajax handle-as="json" url="/api/work" last-response="{{data}}"></iron-ajax>
@@ -22,7 +40,7 @@
     Polymer({
       is: 'work-all',
       getClass: function(index) {
-        return ( (index > 0) || (index == 9) ) ? "col--3-12 col--6-12-md pad" : "col--6-12 col--12-12-md pad";
+        return (index > 0) ? "smallLink" : "bigLink";
       },
       attached: function() {
           this.$$('iron-ajax').params = {};

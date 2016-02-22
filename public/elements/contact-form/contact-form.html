@@ -130,34 +130,44 @@
 		    -webkit-animation-name: shake;
 		    animation-name: shake
 		}
+		.formFull{
+			@apply(--column);
+			@apply(--pad);
+			@apply(--col-12-12);
+		}
+		.formHalf{
+			@apply(--column);
+			@apply(--pad);
+			@apply(--col-6-12);
+		}
 	</style>
 	<template>
 		  <form id="contactForm" method="get" action="">
-			<div class="col--12-12 pad">
+			<div class="formFull">
 			  <fieldset class="formComponent">
 				<label class="formComponent__label" for="fullName">Name</label>
 				<input class="formComponent__input" placeholder="ex: Steve Smith" type="text" id="fullName" name="fullName" />
 			  </fieldset>
 			</div>
-			<div class="col--6-12 pad">
+			<div class="formHalf">
 			  <fieldset class="formComponent">
 				<label class="formComponent__label" for="phone">Phone</label>
 				<input class="formComponent__input" placeholder="555-555-5555" type="text" id="phone" name="phone" />
 			  </fieldset>
 			</div>
-			<div class="col--6-12 pad">
+			<div class="formHalf">
 			  <fieldset class="formComponent">
 				<label class="formComponent__label" for="email">Email</label>
 				<input class="formComponent__input" placeholder="your@email.com" type="text" id="email" name="email" />
 			  </fieldset>
 			</div>
-			<div class="col--12-12 pad">
+			<div class="formFull">
 			  <fieldset class="formComponent">
 				<label class="formComponent__label" for="message">Message</label>
 				<textarea class="formComponent__input formComponent__input--tall" id="message" name="message"></textarea>
 			  </fieldset>
 			</div>
-			<div class="col--12-12 pad">
+			<div class="formFull">
 			  <input class="formComponent__button" type="submit" id="submitButn" alt="Submit" value="Say Hi" />
 			</div>
 		  </form>
