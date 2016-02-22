@@ -8,6 +8,7 @@
 
     .sectionHead{
         @apply(--section-header);
+        @apply(--animated);
     }
 
     @-webkit-keyframes fadeInLeft {
@@ -48,6 +49,7 @@
       @apply(--column);
       @apply(--pad);
       @apply(--col-6-12);
+      @apply(--animated);
     }
     .smallLink{
       @apply(--column);
@@ -107,9 +109,9 @@
     <article class="pageBound">
         <iron-ajax handle-as="json" url$="{{buildURL(path)}}" last-response="{{data}}"></iron-ajax>
         <header class="header">
-          <h2 class="sectionHead fadeInDown animated">{{data.label}}</h2>
+          <h2 class="sectionHead fadeInDown">{{data.label}}</h2>
         </header>
-        <div class="workItemContent fadeInLeft animated">
+        <div class="workItemContent fadeInLeft">
           <div class="contentItem">
             <h3 class="contentItem__head">Project:</h3>
             <p class="contentItem__p">{{data.project}}</p>

@@ -68,12 +68,6 @@ p{
         left: 0;
     }
 
-body /deep/ .animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
 @-webkit-keyframes fadeInDown {
     0% {
         opacity: 0;
@@ -97,10 +91,6 @@ body /deep/ .animated {
         -webkit-transform: none;
         transform: none
     }
-}
-body /deep/ .fadeInDown {
-    -webkit-animation-name: fadeInDown;
-    animation-name: fadeInDown
 }
 
 @-webkit-keyframes fadeInUp {
@@ -127,10 +117,7 @@ body /deep/ .fadeInDown {
         transform: none
     }
 }
-body /deep/ .fadeInUp {
-    -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp
-}
+
 @-webkit-keyframes fadeInRight {
     0% {
         opacity: 0;
@@ -154,8 +141,4 @@ body /deep/ .fadeInUp {
         -webkit-transform: none;
         transform: none
     }
-}
-body /deep/ .fadeInRight {
-    -webkit-animation-name: fadeInRight;
-    animation-name: fadeInRight
 }

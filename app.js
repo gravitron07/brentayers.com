@@ -105,10 +105,11 @@ app.get('/contact', function(req, res){
 
 app.get('/project/:path', function(req, res){
 	//app.get('/', routes.index);
-	var parms = {
-		title : "projects"
-	}
-	res.render('project.html', parms);
+	var path = req.params.path,
+		client = {};
+	json = getConfig('clients-config.js');
+	client = getProject(json,path);
+	res.render('project.html', client);
 });
 
 app.get('/api/project/:path', function(req, res){

@@ -8,6 +8,7 @@
       border: 4px solid #ccc;
       display: block;
       height: 100%;
+      @apply(--animated);
     }
     .workNav__image{
       width: 100%;
@@ -77,10 +78,10 @@
   </style>
   <template>
         <template is="dom-if" if="{{isLink(path)}}">
-          <a class="workNav__anchor bounceInDown animated" href$="{{buildURL(path)}}"><img class="workNav__image" src$="{{getImage(image)}}" /></a>
+          <a class="workNav__anchor bounceInDown" href$="{{buildURL(path)}}"><img class="workNav__image" src$="{{getImage(image)}}" /></a>
         </template>
         <template is="dom-if" if="{{isImage(path)}}">
-          <span class="workNav__anchor bounceInDown animated" href$="{{buildURL(path)}}"><img class="workNav__image" src$="{{getImage(image)}}" /></span>
+          <span class="workNav__anchor bounceInDown" href$="{{buildURL(path)}}"><img class="workNav__image" src$="{{getImage(image)}}" /></span>
         </template>
   </template>
 </dom-module>

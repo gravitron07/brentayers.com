@@ -54,6 +54,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
   :root {
+      --animated: {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+      };
       --column: {
         position: relative;
         float: left;
@@ -199,6 +205,166 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         };
   }
 
+html, body{
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ a{
+    color: #fff;
+}
+
+p{
+    line-height: 1.4rem;
+}
+
+.pageBound{
+    max-width:1290px;
+    margin: 0 auto;
+    text-align: left;
+}
+.content{
+    position: relative;
+    background-color: #fff;
+    padding: 30px 16px 0;
+    -webkit-transform: translateZ(1px);
+}
+
+
+@font-face {
+  font-family: 'Andada-Regular';
+  src: url('../fonts/Andada-Regular.eot?#iefix') format('../fonts/embedded-opentype'),  url('../fonts/Andada-Regular.otf')  format('opentype'),
+         url('../fonts/Andada-Regular.woff') format('woff'), url('../fonts/Andada-Regular.ttf')  format('truetype'), url('../fonts/Andada-Regular.svg#Andada-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+    .header{
+        background: #202129;
+        padding: 0 0 25px 0;
+        color: #fff;
+    }
+    .header:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .header--fixed{
+        position:relative;
+        color: #fff;
+    }
+    .header--fixed:before {
+        content: "";
+        padding-top: 48%;
+        display: block;
+        /*background: url("../images/bulb.jpg") fixed;
+        background-size: 100%;*/
+        background: #202129;
+    }
+    .header__imageWrap--fixed{
+        position: fixed;
+        min-width: 288px;
+        min-height: 316px;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+    .animated{
+        @apply(--animated);
+    }
+    .fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown
+    }
+    .fadeInUp {
+        -webkit-animation-name: fadeInUp;
+        animation-name: fadeInUp
+    }
+    .fadeInRight {
+        -webkit-animation-name: fadeInRight;
+        animation-name: fadeInRight
+    }
     .sectionHead{
         @apply(--section-header);
     }
